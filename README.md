@@ -2,12 +2,12 @@
 
 This is test project to implement comman line application which must be able to code all wav files in directory to mp3.
 
-##Sinopsis
+## Sinopsis
 ```
     folder2mp3 [OPTION]... [DIRECTORY]...
 ```
 
-##Options
+## Options
     -v, --verbose	explain what is being done
     -t=N, -threads=N	option to configure how many threads use for coding. Default N = CPU number
     --version		output version information and exit
@@ -15,7 +15,7 @@ This is test project to implement comman line application which must be able to 
 
 # Installation
 
-##Linux
+## Linux
 
 For folder2mp3 compilation reqires gcc >= 7.0, cmake and libmp3lame-dev.
 Here is the installation steps:
@@ -36,7 +36,7 @@ Following example will encode all wav files to mp3 from "HOME/audiobook" folder
     folder2mp3 ~/audiobook
 ```
 
-#Testing 
+# Testing 
 
 ## Auto testing
 Google tests requre for auto tests.

@@ -11,7 +11,6 @@ constexpr auto MAXIMUM_THREADS = 99;
 
 CmdOptions CmdOptions::getOptions(int argc, const char **argv)
 {
-
     CmdOptions lv_options;
 
     if (argc < 2)

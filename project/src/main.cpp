@@ -1,4 +1,5 @@
 #include "../include/cmd_options.h"
+#include "../include/file_list.h"
 
 #include <iostream>
 
@@ -20,6 +21,10 @@ int main(int argc, const char **argv)
     try
     {
         auto lv_options = CmdOptions::getOptions(argc, argv);
+
+        auto files = FileList::get(lv_options.getPath());
+
+
     }
     catch(std::runtime_error& err)
     {

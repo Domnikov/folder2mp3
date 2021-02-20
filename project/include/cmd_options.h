@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string_view>
+
 namespace folder2cpp
 {
 
@@ -11,7 +13,7 @@ public:
     bool  isVerbose     () { return m_verbose    ; }
     bool  isVersion     () { return m_version    ; }
     int   getThreadsNumb() { return m_threadsNumb; }
-    const char* getPath       () { return m_path       ; }
+    std::string_view getPath       () { return m_path       ; }
 
 private:
     CmdOptions() = default;
@@ -19,7 +21,7 @@ private:
     bool  m_verbose     = false  ;
     bool  m_version     = false  ;
     int   m_threadsNumb = -1     ;
-    const char* m_path        = nullptr;
+    std::string_view m_path      ;
 };
 
-} // namespace folder2cpp::CmdOptions
+} // namespace folder2cpp

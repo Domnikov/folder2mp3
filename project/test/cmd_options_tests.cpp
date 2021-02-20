@@ -20,8 +20,7 @@ TEST(Cmd_options_Tests, Short_Arguments)
     ASSERT_TRUE (lv_option.isVerbose()) << "-v command line argument doesn't work";
     ASSERT_FALSE(lv_option.isVersion()) << "--version command line option true by mistake";
     ASSERT_EQ   (lv_option.getThreadsNumb(), 10) << "-t=N command line option doesn't work";
-    ASSERT_NE   (lv_option.getPath(), nullptr) << "PATH is null";
-    ASSERT_EQ   (strcmp(lv_option.getPath(), args[size - 1]), 0) << "Wrong PATH";
+    ASSERT_EQ   (lv_option.getPath(), args[size - 1]) << "Wrong PATH";
 }
 
 
@@ -35,8 +34,7 @@ TEST(Cmd_options_Tests, Long_Arguments)
     ASSERT_TRUE (lv_option.isVerbose()) << "-v command line argument doesn't work";
     ASSERT_TRUE (lv_option.isVersion()) << "--version command line option true by mistake";
     ASSERT_EQ   (lv_option.getThreadsNumb(), 5) << "-t=N command line option doesn't work";
-    ASSERT_NE   (lv_option.getPath(), nullptr) << "PATH is null";
-    ASSERT_EQ   (strcmp(lv_option.getPath(), args[size - 1]), 0) << "Wrong PATH";
+    ASSERT_EQ   (lv_option.getPath(), args[size - 1]) << "Wrong PATH";
 }
 
 

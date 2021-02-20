@@ -13,6 +13,8 @@ Options:
 )";
 
 
+using namespace folder2cpp;
+
 int main(int argc, const char **argv)
 {
     try
@@ -21,7 +23,7 @@ int main(int argc, const char **argv)
     }
     catch(std::runtime_error& err)
     {
-        std::cout << "Command line arguments error: " << err.what() << std::endl;
+        std::cout << err.what() << std::endl;
         std::cout << CMD_ERROR << std::endl;
     }
 

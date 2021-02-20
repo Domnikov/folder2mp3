@@ -4,6 +4,9 @@
 #include <stdexcept>
 
 
+using namespace folder2cpp;
+
+
 constexpr auto MAXIMUM_THREADS = 99;
 
 CmdOptions CmdOptions::getOptions(int argc, const char **argv)
@@ -13,7 +16,7 @@ CmdOptions CmdOptions::getOptions(int argc, const char **argv)
 
     if (argc < 2)
     {
-        throw std::runtime_error("Require minimum one argument");
+        throw std::runtime_error("Command line arguments error: Require minimum one argument");
     }
 
     lv_options.m_path = argv[argc-1];
@@ -38,7 +41,7 @@ CmdOptions CmdOptions::getOptions(int argc, const char **argv)
             }
             else
             {
-                throw std::runtime_error("Number of threads must be 1...99");
+                throw std::runtime_error("Command line arguments error: Number of threads must be 1...99");
             }
         }
         else if (strstr(argv[i], "--threads=") != nullptr)
@@ -51,12 +54,12 @@ CmdOptions CmdOptions::getOptions(int argc, const char **argv)
             }
             else
             {
-                throw std::runtime_error("Number of threads must be 1...99");
+                throw std::runtime_error("Command line arguments error: Number of threads must be 1...99");
             }
         }
         else
         {
-            std::string err_str = "Wrong command line option: ";
+            std::string err_str = "Command line arguments error: Wrong command line option: ";
             err_str += argv[i];
             throw std::runtime_error(err_str);
         }

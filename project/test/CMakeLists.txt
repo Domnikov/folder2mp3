@@ -6,7 +6,7 @@ endif()
 
 include_directories(${GTEST_INCLUDE_DIRS} ../include)
 
-set(TEST_SRC test_main.cpp lame_tests.cpp auxiliary_tests.cpp)
+set(TEST_SRC test_main.cpp lame_tests.cpp cmd_options_tests.cpp)
 
 foreach(SRC ${SOURCE_EXE})
     if(NOT ${SRC} MATCHES "src/main.cpp")

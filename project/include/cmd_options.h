@@ -1,5 +1,8 @@
 #pragma once
 
+namespace folder2cpp
+{
+
 class CmdOptions final
 {
 public:
@@ -18,3 +21,5 @@ private:
     int   m_threadsNumb = -1     ;
     const char* m_path        = nullptr;
 };
+
+} // namespace folder2cpp::CmdOptions

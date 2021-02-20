@@ -80,3 +80,4 @@ Must display two new mp3 file:
 
 # Change log
 version 0	2021.02.20 16:30	Initial commit. Included tests, cmake, file samples 
+version 0.0.1	2021.02.20 19:10	Completed CmdOption class + full tests

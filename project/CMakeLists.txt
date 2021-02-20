@@ -1,5 +1,9 @@
 # Create executable
-add_executable(folder2mp3 src/main.cpp)
+
+set(SOURCE_EXE src/main.cpp
+			  src/cmd_options.cpp)
+
+add_executable(folder2mp3 ${SOURCE_EXE})
 
 target_include_directories(folder2mp3 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 

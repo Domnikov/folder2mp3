@@ -8,10 +8,9 @@ This is test project to implement comman line application which must be able to 
 ```
 
 ## Options
-    -v, --verbose		explain what is being done
-    -t=N, -threads=N	option to configure how many threads use for coding. Default N = CPU number
-    --version		output version information and exit
-
+    -v, --verbose       explain what is being done
+    -t=N, --threads=N   option to configure how many threads use for coding. Default N = CPU number [1..99]
+    --version           output version information and exit
 
 # Installation
 
@@ -79,5 +78,5 @@ Must display two new mp3 file:
     sample2.mp3
 ```
 
-## Change log
+# Change log
 version 0	2021.02.20 16:30	Initial commit. Included tests, cmake, file samples 

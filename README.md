@@ -54,16 +54,13 @@ To run tests:
 
 ## Used other testing tools:
 For developing and testing was used folowing test tools:
-
-g++ ... -fsanitize=address
-
-g++ ... -fsanitize=thread
-
-g++ ... -fsanitize=undefined
-
-g++ ... -pg
-
-valgrind
+```
+    g++ ... -fsanitize=address
+    g++ ... -fsanitize=thread
+    g++ ... -fsanitize=undefined
+    g++ ... -pg
+```
+    valgrind
 
 ## Manual test
 
@@ -73,13 +70,13 @@ corrupted.wav			-	corrupted file with wav extension. Must be ignored
 sample3.wa_			-	normal wav file but with wrong extension. Must be ignored
 To test utility after compilation:
 ```
-./project/folder2mp3 ./project/res
-ls ./project/res/*.mp3
+    ./project/folder2mp3 ./project/res
+    ls ./project/res/*.mp3
 ```
 Must display two new mp3 file:
 ```
-sample1.mp3
-sample2.mp3
+    sample1.mp3
+    sample2.mp3
 ```
 
 ## Change log

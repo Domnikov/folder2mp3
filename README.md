@@ -8,7 +8,7 @@ This is test project to implement comman line application which must be able to 
 ```
 
 ## Options
-    -v, --verbose	explain what is being done
+    -v, --verbose		explain what is being done
     -t=N, -threads=N	option to configure how many threads use for coding. Default N = CPU number
     --version		output version information and exit
 
@@ -23,7 +23,7 @@ Here is the installation steps:
     mkdir build
     cd build
     cmake ..
-    cmake --build
+    cmake --build .
     make install
 ```
 As result folder2mp3 execution file must appear in default PATH directory.
@@ -45,7 +45,7 @@ Tests compilation:
     mkdir build
     cd build
     cmake .. -DCOMPILE_TESTS=ON
-    cmake --build
+    cmake --build .
 ```
 To run tests:
 ```

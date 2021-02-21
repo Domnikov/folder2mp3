@@ -2,6 +2,7 @@
 
 set(SOURCE_EXE src/main.cpp
 			  src/cmd_options.cpp
+			  src/wav_file.cpp
 			  )
 
 add_executable(folder2mp3 ${SOURCE_EXE})

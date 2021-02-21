@@ -1,4 +1,6 @@
 #pragma once
+#include "../include/wav_file.h"
+#include <iostream>
 
 #include <filesystem>
 #include <thread>
@@ -20,8 +22,13 @@ class Printer
         static std::mutex lv_mutex;
         std::lock_guard<std::mutex> lock(lv_mutex);
         fprintf(stderr, "%s --> ", file.c_str());
+
+        WavFile lv_file(file);
+
         file.replace_extension(".mp3");
         fprintf(stderr, "%s\n", file.c_str());
+
+        std::cout<<lv_file.getTextInfo()<<std::endl;
     }
 
     using listType = std::vector<std::filesystem::path>;

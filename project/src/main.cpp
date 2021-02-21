@@ -1,5 +1,5 @@
 #include "../include/cmd_options.h"
-#include "../include/file_list.h"
+#include "../include/file_list.hpp"
 #include "../include/encoder_pool.hpp"
 
 #include <lame/lame.h>

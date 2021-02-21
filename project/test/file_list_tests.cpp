@@ -9,12 +9,13 @@ namespace folder2cpp::tests
 
 using namespace folder2cpp;
 
+constexpr auto WAV_EXTENSION = ".wav";
 
 TEST(File_List_Test, Project_Res_File_list)
 {
     auto lv_path = "./project/res/";
 
-    auto lv_files = FileList::get(lv_path);
+    auto lv_files = FileList::get(lv_path, WAV_EXTENSION);
 
     ASSERT_EQ   (lv_files.size(), 3) << "./build/project/res contains only 3 wav files";
 }
@@ -26,7 +27,7 @@ TEST(File_List_Test, Wrong_path)
 
     try
     {
-        FileList::get(lv_path);
+        FileList::get(lv_path, WAV_EXTENSION);
         FAIL() << "Getting file list from wrong path must throw an exception";
     }
     catch (std::runtime_error& ex)

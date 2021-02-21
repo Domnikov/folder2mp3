@@ -81,3 +81,5 @@ Must display two new mp3 file:
 # Change log
 version 0	2021.02.20 16:30	Initial commit. Included tests, cmake, file samples 
 version 0.0.1	2021.02.20 19:10	Completed CmdOption class + full tests
+version 0.0.2	2021.02.20 20:44	Get wav file list class + full tests
+version 0.0.3	2021.02.21 23:30	Thread_pool class + full tests

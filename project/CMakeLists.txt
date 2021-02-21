@@ -2,12 +2,13 @@
 
 set(SOURCE_EXE src/main.cpp
 			  src/cmd_options.cpp
-			  src/file_list.cpp
 			  )
 
 add_executable(folder2mp3 ${SOURCE_EXE})
 
 target_include_directories(folder2mp3 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+target_link_libraries(folder2mp3 mp3lame pthread)
 
 option(COMPILE_TESTS "Compile the tests" OFF)
 if(COMPILE_TESTS)

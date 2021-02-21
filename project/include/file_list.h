@@ -14,7 +14,18 @@ public:
 
     FileList() = delete;
 
-    static fileList get(std::string_view path);
+    static fileList get(std::string_view path, std::string_view extension)
+    {
+        fileList lv_fileList;
+        for (const auto& file : std::filesystem::directory_iterator(path))
+        {
+            if(file.path().extension() == extension)
+                lv_fileList.emplace_back(file);
+        }
+
+        return lv_fileList;
+    }
+
 };
 
 } // namespace folder2cpp

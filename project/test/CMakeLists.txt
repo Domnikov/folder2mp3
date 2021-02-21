@@ -10,6 +10,7 @@ set(TEST_SRC test_main.cpp
 	     lame_tests.cpp 
 	     cmd_options_tests.cpp
 	     file_list_tests.cpp
+	     encoder_pool_tests.cpp
 	     )
 
 foreach(SRC ${SOURCE_EXE})
@@ -21,5 +22,5 @@ endforeach()
 
 add_executable(folder2mp3_test ${TEST_SRC})
 
-target_link_libraries(folder2mp3_test ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES})
+target_link_libraries(folder2mp3_test ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} mp3lame pthread)
 

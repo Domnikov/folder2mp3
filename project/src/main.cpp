@@ -1,7 +1,11 @@
 #include "../include/cmd_options.h"
 #include "../include/file_list.h"
+#include "../include/encoder_pool.hpp"
+
+#include <lame/lame.h>
 
 #include <iostream>
+#include <memory>
 
 constexpr auto CMD_ERROR = R"(
 Using:
@@ -13,7 +17,6 @@ Options:
     --version           output version information and exit
 )";
 
-
 using namespace folder2cpp;
 
 int main(int argc, const char **argv)
@@ -22,9 +25,15 @@ int main(int argc, const char **argv)
     {
         auto lv_options = CmdOptions::getOptions(argc, argv);
 
-        auto files = FileList::get(lv_options.getPath());
+        auto files = FileList::get(lv_options.getPath(), ".wav");
 
+        auto lv_threadNumb = lv_options.getThreadsNumb();
+        if (lv_threadNumb < 1)
+        {
+            lv_threadNumb = std::thread::hardware_concurrency();
+        }
 
+        EncoderPool::process(lv_threadNumb, std::move(files));
     }
     catch(std::runtime_error& err)
     {

@@ -1,3 +1,12 @@
+/**
+ * \file cmd_options_tests.hpp
+ * \author Domnikov Ivan
+ * \copyright © Domnikov Ivan 2021
+ * File contains unit tests for CmdOptions class
+ *
+ */
+#pragma once
+
 #include "../include/cmd_options.hpp"
 
 #include "gtest/gtest.h"
@@ -10,6 +19,9 @@ namespace folder2cpp::tests
 using namespace folder2cpp;
 
 
+/**
+ * \brief Unit test to check if CmdOptions can read short version of arguments
+ */
 TEST(Cmd_options_Tests, Short_Arguments)
 {
     const char* lv_cmdArg_short    [] = {"", "-v", "-t=10", "~"};
@@ -24,6 +36,9 @@ TEST(Cmd_options_Tests, Short_Arguments)
 }
 
 
+/**
+ * \brief Unit test to check if CmdOptions can read long version of arguments
+ */
 TEST(Cmd_options_Tests, Long_Arguments)
 {
     const char* lv_cmdArg_long     [] = {"", "--verbose", "--version", "--threads=5", "./project/res"};
@@ -38,6 +53,9 @@ TEST(Cmd_options_Tests, Long_Arguments)
 }
 
 
+/**
+ * \brief Unit test to check if CmdOptions will throw an exception if there's no arguments
+ */
 TEST(Cmd_options_Tests, Empty_Arguments)
 {
     const char* lv_cmdArg_empty    [] = {""};
@@ -60,7 +78,9 @@ TEST(Cmd_options_Tests, Empty_Arguments)
 }
 
 
-
+/**
+ * \brief Unit test to check if CmdOptions will throw an exception if there's wrong argument
+ */
 TEST(Cmd_options_Tests, Wrong_Argument)
 {
     const char* lv_cmdArg_wrong    [] = {"", "-w", "~"};
@@ -83,6 +103,9 @@ TEST(Cmd_options_Tests, Wrong_Argument)
 }
 
 
+/**
+ * \brief Unit test to check if CmdOptions will throw an exception if number of threads incorrect
+ */
 TEST(Cmd_options_Tests, Wrong_threads_Arguments)
 {
     const char* lv_cmdArg_wrong_thr[] = {"", "-t=X", "~"};

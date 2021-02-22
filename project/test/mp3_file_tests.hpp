@@ -1,3 +1,12 @@
+/**
+ * \file mp3_file_tests.hpp
+ * \author Domnikov Ivan
+ * \copyright © Domnikov Ivan 2021
+ * File contains unit tests for Mp3File class
+ *
+ */
+#pragma once
+
 #include "../include/mp3_file.hpp"
 
 #include "gtest/gtest.h"
@@ -9,6 +18,10 @@ namespace folder2cpp::tests
 
 using namespace folder2cpp;
 
+
+/**
+ * \brief Test Mp3File to create and write
+ */
 TEST(Mp3_file_Test, Write_test)
 {
     auto lv_path = "./project/res/write_test.mp3";

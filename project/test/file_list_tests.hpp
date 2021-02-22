@@ -1,3 +1,12 @@
+/**
+ * \file file_list_tests.hpp
+ * \author Domnikov Ivan
+ * \copyright © Domnikov Ivan 2021
+ * File contains unit tests for FileList class
+ *
+ */
+#pragma once
+
 #include "../include/file_list.hpp"
 
 #include "gtest/gtest.h"
@@ -11,6 +20,10 @@ using namespace folder2cpp;
 
 constexpr auto WAV_EXTENSION = ".wav";
 
+
+/**
+ * \brief Unit test to check if test dirrectory can be read
+ */
 TEST(File_List_Test, Project_Res_File_list)
 {
     auto lv_path = "./project/res/";
@@ -21,6 +34,9 @@ TEST(File_List_Test, Project_Res_File_list)
 }
 
 
+/**
+ * \brief Unit test to check if FileList will throw an exception if dirrectry is wrong
+ */
 TEST(File_List_Test, Wrong_path)
 {
     auto lv_path = "./project/res/sample1.wav";

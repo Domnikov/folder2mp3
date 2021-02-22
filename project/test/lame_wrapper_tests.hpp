@@ -1,3 +1,12 @@
+/**
+ * \file lame_wrapper_tests.hpp
+ * \author Domnikov Ivan
+ * \copyright © Domnikov Ivan 2021
+ * File contains unit tests for LameWrapper class
+ *
+ */
+#pragma once
+
 #include "../include/lame_wrapper.hpp"
 
 #include "gtest/gtest.h"
@@ -9,6 +18,10 @@ namespace folder2cpp::tests
 
 using namespace folder2cpp;
 
+
+/**
+ * \brief Test LameWrapper to encode sample2.wav and check mp3 file size
+ */
 TEST(Lame_Wrapper_Test, Test_output_file_size)
 {
     auto lv_wavPath = "./project/res/sample2.wav";

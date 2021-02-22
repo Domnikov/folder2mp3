@@ -1,3 +1,12 @@
+/**
+ * \file wav_file_tests.hpp
+ * \author Domnikov Ivan
+ * \copyright © Domnikov Ivan 2021
+ * File contains unit tests for WavFile class
+ *
+ */
+#pragma once
+
 #include "../include/wav_file.hpp"
 
 #include "gtest/gtest.h"
@@ -9,6 +18,10 @@ namespace folder2cpp::tests
 
 using namespace folder2cpp;
 
+
+/**
+ * \brief Test to read sample1.wav file header
+ */
 TEST(Wav_file_Test, Sample1_test)
 {
     auto lv_path = "./project/res/sample1.wav";
@@ -22,6 +35,9 @@ TEST(Wav_file_Test, Sample1_test)
 }
 
 
+/**
+ * \brief Test to read sample2.wav file header
+ */
 TEST(Wav_file_Test, Sample2_test)
 {
     auto lv_path = "./project/res/sample2.wav";
@@ -35,6 +51,9 @@ TEST(Wav_file_Test, Sample2_test)
 }
 
 
+/**
+ * \brief Test to read corrupted.wav file header
+ */
 TEST(Wav_file_Test, Corrupted_test)
 {
     auto lv_path = "./project/res/corrupted.wav";

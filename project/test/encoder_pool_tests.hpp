@@ -1,3 +1,12 @@
+/**
+ * \file encoder_pool_tests.hpp
+ * \author Domnikov Ivan
+ * \copyright © Domnikov Ivan 2021
+ * File contains unit tests for ThreadPool class
+ *
+ */
+#pragma once
+
 #include "../include/encoder_pool.hpp"
 
 #include "gtest/gtest.h"
@@ -12,6 +21,10 @@ using namespace folder2cpp::folder2cppImpl;
 int result = 0;
 constexpr auto SLEEP_FOR_MS = 10;
 
+
+/**
+ * \brief Small Processor simulation for unit test
+ */
 class Counter
 {
     public:
@@ -30,6 +43,9 @@ class Counter
 };
 
 
+/**
+ * \brief Unit test to check if 10 threads works simultaniosly
+ */
 TEST(Encoder_Pool_Test, Count_10_threds)
 {
     auto lv_start = std::chrono::high_resolution_clock::now();
@@ -42,6 +58,9 @@ TEST(Encoder_Pool_Test, Count_10_threds)
 }
 
 
+/**
+ * \brief Unit test to check if 2 threads works simultaniosly and consume all data
+ */
 TEST(Encoder_Pool_Test, Count_2_threds)
 {
     result = 0;

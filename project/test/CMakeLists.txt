@@ -6,14 +6,14 @@ endif()
 
 include_directories(${GTEST_INCLUDE_DIRS} ../include)
 
-set(TEST_SRC test_main.cpp 
-	     lame_wrapper_tests.cpp 
-	     cmd_options_tests.cpp
-	     file_list_tests.cpp
-	     encoder_pool_tests.cpp
-	     wav_file_tests.cpp
-	     mp3_file_tests.cpp
-	     )
+set(TEST_SRC test_main.cpp) 
+#	     lame_wrapper_tests.cpp 
+#	     cmd_options_tests.cpp
+#	     file_list_tests.cpp
+#	     encoder_pool_tests.cpp
+#	     wav_file_tests.cpp
+#	     mp3_file_tests.cpp
+#	     )
 
 foreach(SRC ${SOURCE_EXE})
     if(NOT ${SRC} MATCHES "src/main.cpp")

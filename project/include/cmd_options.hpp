@@ -1,5 +1,5 @@
 /**
- * \file cmd_options.h
+ * \file cmd_options.hpp
  * \author Domnikov Ivan
  * \copyright © Domnikov Ivan 2021
  * File contans class CmdOptions for checking all command line options and return as an object with read options as its members
@@ -25,61 +25,61 @@ namespace folder2cpp
  */
 class CmdOptions final
 {
-public:
+    public:
 
-    /**
-     * \brief Method to get CmdOption instance from main function arguments
-     *
-     * This function will throw std::runtime_error exception if arguments is wrong
-     *
-     * \param Number of arguments
-     * \param Array to arguments
-     * \returns CmdOption object
-     */
-    static CmdOptions getOptions(int argc, const char **argv);
-
-
-    /**
-     * \brief Return true if verbose flag ('-v' or '--verbose') was given
-     */
-    bool  isVerbose()const noexcept { return m_verbose; }
+        /**
+         * \brief Method to get CmdOption instance from main function arguments
+         *
+         * This function will throw std::runtime_error exception if arguments is wrong
+         *
+         * \param Number of arguments
+         * \param Array to arguments
+         * \returns CmdOption object
+         */
+        static CmdOptions getOptions(int argc, const char **argv);
 
 
-    /**
-     * \brief Return true if version flag ('--version') was given
-     */
-    bool  isVersion()const noexcept { return m_version; }
+        /**
+         * \brief Return true if verbose flag ('-v' or '--verbose') was given
+         */
+        bool  isVerbose()const noexcept { return m_verbose; }
 
 
-    /**
-     * \brief Return number of threads from '-t=N' or '--threads=N'
-     *
-     * Default value is -1. Then need to use another way to find how many thread need to create
-     */
-    int   getThreadsNumb()const noexcept { return m_threadsNumb; }
+        /**
+         * \brief Return true if version flag ('--version') was given
+         */
+        bool  isVersion()const noexcept { return m_version; }
 
 
-    /**
-     * \brief Get path of folder where files for encodding is locating
-     *
-     * Returns value is a std::string_view with pointing to last argv as its buffer.
-     * Need to be sure the argv will leave longer then CmdOptions object.
-     */
-    std::string_view getPath () const noexcept { return m_path; }
+        /**
+         * \brief Return number of threads from '-t=N' or '--threads=N'
+         *
+         * Default value is -1. Then need to use another way to find how many thread need to create
+         */
+        int   getThreadsNumb()const noexcept { return m_threadsNumb; }
 
-private:
-    CmdOptions() = default;
 
-    /**
-     * \brief Maximum number of thread which application can consume
-     */
-    static constexpr auto MAXIMUM_THREADS = 99;
+        /**
+         * \brief Get path of folder where files for encodding is locating
+         *
+         * Returns value is a std::string_view with pointing to last argv as its buffer.
+         * Need to be sure the argv will leave longer then CmdOptions object.
+         */
+        std::string_view getPath () const noexcept { return m_path; }
 
-    bool  m_verbose     = false;
-    bool  m_version     = false;
-    int   m_threadsNumb = -1   ;
+    private:
+        CmdOptions() = default;
 
-    std::string_view m_path;
+        /**
+         * \brief Maximum number of thread which application can consume
+         */
+        static constexpr auto MAXIMUM_THREADS = 99;
+
+        bool  m_verbose     = false;
+        bool  m_version     = false;
+        int   m_threadsNumb = -1   ;
+
+        std::string_view m_path;
 };
 
 } // namespace folder2cpp

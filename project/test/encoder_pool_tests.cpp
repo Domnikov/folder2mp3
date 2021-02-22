@@ -7,7 +7,7 @@
 namespace folder2cpp::tests
 {
 
-using namespace folder2cpp;
+using namespace folder2cpp::folder2cppImpl;
 
 int result = 0;
 constexpr auto SLEEP_FOR_MS = 10;

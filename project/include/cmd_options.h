@@ -10,10 +10,11 @@ class CmdOptions final
 public:
     static CmdOptions getOptions(int argc, const char **argv);
 
-    bool  isVerbose     () { return m_verbose    ; }
-    bool  isVersion     () { return m_version    ; }
-    int   getThreadsNumb() { return m_threadsNumb; }
-    std::string_view getPath       () { return m_path       ; }
+    bool  isVerbose     ()const noexcept { return m_verbose    ; }
+    bool  isVersion     ()const noexcept { return m_version    ; }
+    int   getThreadsNumb()const noexcept { return m_threadsNumb; }
+
+    std::string_view getPath () const noexcept { return m_path       ; }
 
 private:
     CmdOptions() = default;

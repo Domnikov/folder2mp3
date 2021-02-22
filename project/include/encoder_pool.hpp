@@ -72,7 +72,6 @@ class ThreadPool final
 
         ThreadPool() = default;
 
-
         ~ThreadPool()
         {
             for(auto& t : m_pool)

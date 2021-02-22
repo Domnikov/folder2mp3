@@ -10,15 +10,15 @@ public:
 
     std::string_view getTextInfo();
 
-    int getChannels(){return m_header.channels;}
+    int getChannels() const noexcept {return m_header.channels;}
 
-    int getFrequency(){return m_header.frequency;}
+    int getFrequency() const noexcept {return m_header.frequency;}
 
-    int getBytesPerCapture(){return m_header.bytesByCapture;}
+    int getBytesPerCapture() const noexcept {return m_header.bytesByCapture;}
 
-    bool isCorrect(){return m_isCorrect;}
+    bool isCorrect() const noexcept {return m_isCorrect;}
 
-    std::filesystem::path getPath(){return m_path;}
+    std::filesystem::path getPath() const noexcept {return m_path;}
 
     size_t read(short int* buf, size_t length)
     {
@@ -28,7 +28,6 @@ public:
 
     WavFile(const WavFile& ) = delete;
     WavFile& operator=(const WavFile& ) = delete;
-
 
 
 private:
@@ -47,6 +46,7 @@ private:
         char    data[4];         // should always contain "data"
         int32_t bytesInData;
     } __attribute__((__packed__));
+    // Check wavHeader structure size
     static constexpr size_t wavHeaderSize = 44;
     static_assert(sizeof(wavHeader) == wavHeaderSize, "Wav header structure size incorrect");
 
@@ -61,5 +61,5 @@ private:
     size_t m_infoLength = 0;
     wavHeader m_header;
     bool m_isCorrect = false;
-    int m_durationSec = 0;
+    int m_durationMsec = 0;
 };

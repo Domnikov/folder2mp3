@@ -52,7 +52,7 @@ WavFile::WavFile(const std::filesystem::path& filePath)
 
              if (m_isCorrect)
              {
-                 m_durationSec = 1000 * m_header.bytesInData / m_header.bytesPerSecond;
+                 m_durationMsec = 1000 * m_header.bytesInData / m_header.bytesPerSecond;
              }
          }
     }
@@ -79,9 +79,9 @@ std::string_view WavFile::getTextInfo()
                     m_header.bitsPerSample,
                     m_header.data[0],m_header.data[1],m_header.data[2],m_header.data[3],
                     m_header.bytesInData,
-                    m_durationSec/1000/60,
-                    (m_durationSec/1000)%60,
-                    m_durationSec%1000);
+                    m_durationMsec/1000/60,
+                    (m_durationMsec/1000)%60,
+                    m_durationMsec%1000);
         }
         else
         {

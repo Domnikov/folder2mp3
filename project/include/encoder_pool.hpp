@@ -1,6 +1,7 @@
 #pragma once
 #include "../include/wav_file.h"
-#include <iostream>
+#include "../include/mp3_file.h"
+#include "../include/lame_wrapper.h"
 
 #include <filesystem>
 #include <thread>
@@ -13,22 +14,39 @@ namespace folder2cpp
 {
 
 
-class Printer
+class LameEncoder
 {
     public:
 
     static void process(std::filesystem::path&& file)
     {
-        static std::mutex lv_mutex;
-        std::lock_guard<std::mutex> lock(lv_mutex);
-        fprintf(stderr, "%s --> ", file.c_str());
+        try
+        {
+            WavFile lv_wavFile(file);
 
-        WavFile lv_file(file);
+            if (!lv_wavFile.isCorrect())
+            {
+                static std::mutex lv_mutex;
+                std::lock_guard<std::mutex> lock(lv_mutex);
+                fprintf(stdout, "%s\n", lv_wavFile.getTextInfo().data());
+                return;
+            }
 
-        file.replace_extension(".mp3");
-        fprintf(stderr, "%s\n", file.c_str());
+            file.replace_extension(".mp3");
+            Mp3File lv_mp3File(file);
+            {
+                static std::mutex lv_mutex;
+                std::lock_guard<std::mutex> lock(lv_mutex);
+                fprintf(stdout, "Encoding %s --> %s\n", lv_wavFile.getPath().c_str(), lv_mp3File.getPath().c_str());
+                fprintf(stdout, "%s\n", lv_wavFile.getTextInfo().data());
+            }
 
-        std::cout<<lv_file.getTextInfo()<<std::endl;
+            LameWrapper::encode(lv_wavFile, lv_mp3File);
+        }
+        catch(std::runtime_error& ex)
+        {
+            fprintf(stderr, "LameEncoder Error: %s\n", ex.what());
+        }
     }
 
     using listType = std::vector<std::filesystem::path>;
@@ -56,7 +74,7 @@ class ThreadPool final
 
 
         ~ThreadPool()
-        {int  i =0;
+        {
             for(auto& t : m_pool)
             {
                 t.join();
@@ -106,7 +124,7 @@ class ThreadPool final
 };
 
 
-using EncoderPool = ThreadPool<Printer>;
+using EncoderPool = ThreadPool<LameEncoder>;
 
 
 } // namespace folder2cpp

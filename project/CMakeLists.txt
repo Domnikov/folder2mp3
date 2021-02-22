@@ -4,6 +4,7 @@ set(SOURCE_EXE src/main.cpp
 			  src/cmd_options.cpp
 			  src/wav_file.cpp
 			  src/mp3_file.cpp
+			  src/lame_wrapper.cpp
 			  )
 
 add_executable(folder2mp3 ${SOURCE_EXE})

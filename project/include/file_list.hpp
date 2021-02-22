@@ -12,8 +12,6 @@ class FileList
 public:
     using fileList = std::vector<std::filesystem::path>;
 
-    FileList() = delete;
-
     static fileList get(std::string_view path, std::string_view extension)
     {
         fileList lv_fileList;
@@ -25,6 +23,9 @@ public:
 
         return lv_fileList;
     }
+
+private:
+    FileList() = delete;
 
 };
 

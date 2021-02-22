@@ -2,8 +2,8 @@
 
 #include <cstring>
 
-constexpr auto INFO_FORMAT = R"(
-File name        = %s
+constexpr auto INFO_FORMAT =
+R"(File name        = %s
 Id               = %c%c%c%c
 Size             = %d bytes
 Wave format      = %c%c%c%c%c%c%c%c

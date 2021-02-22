@@ -12,7 +12,7 @@ using namespace folder2cpp;
 TEST(Mp3_file_Test, Write_test)
 {
     auto lv_path = "./project/res/write_test.mp3";
-    unsigned char lv_sampleLine[0xFF];
+    unsigned char lv_sampleLine[0x100];
     constexpr auto lv_lines = 10;
 
     for (int c = 0; c <= 0xFF; c++)
@@ -36,7 +36,7 @@ TEST(Mp3_file_Test, Write_test)
 
     ASSERT_GE(lv_file, nullptr) << "Written mp3 file cannot be open";
 
-    unsigned char lv_targetBuf[0xFF];
+    unsigned char lv_targetBuf[0x100];
     for (int i = 0; i < lv_lines; i++)
     {
         auto lv_read = fread(lv_targetBuf, sizeof(lv_targetBuf[0]), 0xFF, lv_file.get());

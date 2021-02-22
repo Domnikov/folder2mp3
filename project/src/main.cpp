@@ -2,8 +2,6 @@
 #include "../include/file_list.hpp"
 #include "../include/encoder_pool.hpp"
 
-#include <lame/lame.h>
-
 #include <iostream>
 #include <memory>
 

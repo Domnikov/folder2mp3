@@ -7,7 +7,7 @@ endif()
 include_directories(${GTEST_INCLUDE_DIRS} ../include)
 
 set(TEST_SRC test_main.cpp 
-	     lame_tests.cpp 
+	     lame_wrapper_tests.cpp 
 	     cmd_options_tests.cpp
 	     file_list_tests.cpp
 	     encoder_pool_tests.cpp

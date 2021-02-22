@@ -10,10 +10,17 @@ public:
 
     bool isCorrect(){return m_isCorrect;}
 
+    std::filesystem::path getPath(){return m_path;}
+
     size_t write(unsigned char* buf, size_t length)
     {
         return fwrite(buf, sizeof(buf[0]), length, m_file.get());
     }
+
+
+    Mp3File(const Mp3File& ) = delete;
+    Mp3File& operator=(const Mp3File& ) = delete;
+
 
 
 private:

@@ -14,12 +14,21 @@ public:
 
     int getFrequency(){return m_header.frequency;}
 
+    int getBytesPerCapture(){return m_header.bytesByCapture;}
+
     bool isCorrect(){return m_isCorrect;}
+
+    std::filesystem::path getPath(){return m_path;}
 
     size_t read(short int* buf, size_t length)
     {
         return fread(buf, sizeof(buf[0]), length, m_file.get());
     }
+
+
+    WavFile(const WavFile& ) = delete;
+    WavFile& operator=(const WavFile& ) = delete;
+
 
 
 private:

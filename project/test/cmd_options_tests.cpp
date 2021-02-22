@@ -46,7 +46,7 @@ TEST(Cmd_options_Tests, Empty_Arguments)
     {
         const char** args = lv_cmdArg_empty;
         auto size = sizeof(lv_cmdArg_empty)/sizeof(lv_cmdArg_empty[0]);
-        auto lv_option = CmdOptions::getOptions(size, args);
+        CmdOptions::getOptions(size, args);
         FAIL() << "Command line without arguments must throw an exception";
     }
     catch (std::runtime_error& ex)
@@ -69,7 +69,7 @@ TEST(Cmd_options_Tests, Wrong_Argument)
     {
         const char** args = lv_cmdArg_wrong;
         auto size = sizeof(lv_cmdArg_wrong)/sizeof(lv_cmdArg_wrong[0]);
-        auto lv_option = CmdOptions::getOptions(size, args);
+        CmdOptions::getOptions(size, args);
         FAIL() << "Command line with wrong arguments must throw an exception";
     }
     catch (std::runtime_error& ex)
@@ -91,7 +91,7 @@ TEST(Cmd_options_Tests, Wrong_threads_Arguments)
     {
         const char** args = lv_cmdArg_wrong_thr;
         auto size = sizeof(lv_cmdArg_wrong_thr)/sizeof(lv_cmdArg_wrong_thr[0]);
-        auto lv_option = CmdOptions::getOptions(size, args);
+        CmdOptions::getOptions(size, args);
         FAIL() << "Command line with wrong number of threads must throw an exception";
     }
     catch (std::runtime_error& ex)

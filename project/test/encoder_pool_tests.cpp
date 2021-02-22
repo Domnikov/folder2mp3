@@ -41,4 +41,17 @@ TEST(Encoder_Pool_Test, Count_10_threds)
     ASSERT_LE(lv_duration, 1.5*SLEEP_FOR_MS) << "10 threads didn't work simultaniously";
 }
 
+
+TEST(Encoder_Pool_Test, Count_2_threds)
+{
+    result = 0;
+    auto lv_start = std::chrono::high_resolution_clock::now();
+    ThreadPool<Counter>::process(2, {1,1,1,1,1,1,1,1,1,1});
+    auto lv_end = std::chrono::high_resolution_clock::now();
+
+    auto lv_duration = std::chrono::duration_cast<std::chrono::milliseconds>(lv_end - lv_start).count();
+    ASSERT_EQ(result, 10) << "sum{1,1,1,1,1,1,1,1,1,1} != 10";
+    ASSERT_LE(lv_duration, 5.5*SLEEP_FOR_MS) << "2 threads didn't work simultaniously";
+}
+
 } // namespace folder2cpp::tests

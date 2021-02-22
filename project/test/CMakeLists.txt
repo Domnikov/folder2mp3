@@ -12,6 +12,7 @@ set(TEST_SRC test_main.cpp
 	     file_list_tests.cpp
 	     encoder_pool_tests.cpp
 	     wav_file_tests.cpp
+	     mp3_file_tests.cpp
 	     )
 
 foreach(SRC ${SOURCE_EXE})

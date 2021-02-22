@@ -5,7 +5,7 @@ project(FOLDER_2_MP3)
 # Build specifics
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-SET(CMAKE_CXX_FLAGS "-O2 -Wall -fsanitize=address" )
+SET(CMAKE_CXX_FLAGS "-O2 -Wall" )
 
 # Find and enable doxygen
 find_package(Doxygen)

@@ -1,4 +1,4 @@
-#include "../include/cmd_options.h"
+#include "../include/cmd_options.hpp"
 
 #include "gtest/gtest.h"
 

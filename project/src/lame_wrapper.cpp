@@ -1,4 +1,4 @@
-#include "../include/lame_wrapper.h"
+#include "../include/lame_wrapper.hpp"
 #include <memory>
 #include <functional>
 

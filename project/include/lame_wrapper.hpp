@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../include/wav_file.h"
-#include "../include/mp3_file.h"
+#include "../include/wav_file.hpp"
+#include "../include/mp3_file.hpp"
 
 #include <lame/lame.h>
 

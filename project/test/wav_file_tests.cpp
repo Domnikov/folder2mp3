@@ -1,4 +1,4 @@
-#include "../include/wav_file.h"
+#include "../include/wav_file.hpp"
 
 #include "gtest/gtest.h"
 

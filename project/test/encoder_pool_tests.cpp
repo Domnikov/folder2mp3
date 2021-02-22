@@ -16,7 +16,7 @@ class Counter
 {
     public:
 
-    static void process(int number)
+    static void process(int number, bool)
     {
         static std::mutex lv_mutex;
         {
@@ -33,7 +33,7 @@ class Counter
 TEST(Encoder_Pool_Test, Count_10_threds)
 {
     auto lv_start = std::chrono::high_resolution_clock::now();
-    ThreadPool<Counter>::process(10, {1,1,1,1,1,1,1,1,1,1});
+    ThreadPool<Counter>::process(10, {1,1,1,1,1,1,1,1,1,1}, false);
     auto lv_end = std::chrono::high_resolution_clock::now();
 
     auto lv_duration = std::chrono::duration_cast<std::chrono::milliseconds>(lv_end - lv_start).count();
@@ -46,7 +46,7 @@ TEST(Encoder_Pool_Test, Count_2_threds)
 {
     result = 0;
     auto lv_start = std::chrono::high_resolution_clock::now();
-    ThreadPool<Counter>::process(2, {1,1,1,1,1,1,1,1,1,1});
+    ThreadPool<Counter>::process(2, {1,1,1,1,1,1,1,1,1,1}, false);
     auto lv_end = std::chrono::high_resolution_clock::now();
 
     auto lv_duration = std::chrono::duration_cast<std::chrono::milliseconds>(lv_end - lv_start).count();

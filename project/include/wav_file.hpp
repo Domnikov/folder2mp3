@@ -61,5 +61,5 @@ private:
     size_t m_infoLength = 0;
     wavHeader m_header;
     bool m_isCorrect = false;
-    int m_durationMsec = 0;
+    long long m_durationMsec = 0;
 };

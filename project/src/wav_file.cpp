@@ -1,4 +1,4 @@
-#include "../include/wav_file.h"
+#include "../include/wav_file.hpp"
 
 #include <cstring>
 
@@ -52,7 +52,7 @@ WavFile::WavFile(const std::filesystem::path& filePath)
 
              if (m_isCorrect)
              {
-                 m_durationMsec = 1000 * m_header.bytesInData / m_header.bytesPerSecond;
+                 m_durationMsec = 1000LL * m_header.bytesInData / m_header.bytesPerSecond;
              }
          }
     }

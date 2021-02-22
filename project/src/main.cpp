@@ -1,7 +1,7 @@
-#include "../include/cmd_options.h"
+#include "../include/cmd_options.hpp"
 #include "../include/file_list.hpp"
 #include "../include/encoder_pool.hpp"
-#include "../include/lame_wrapper.h"
+#include "../include/lame_wrapper.hpp"
 
 #include <iostream>
 #include <memory>

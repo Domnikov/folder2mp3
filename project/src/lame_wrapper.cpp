@@ -4,6 +4,14 @@
 
 using namespace folder2cpp;
 
+
+/**
+ * \brief Function to configure lame
+ *
+ * \param lame poiunter
+ * \param Wav file
+ * \return std::pair of wav buffer size and mp3 buffer size
+ */
 template <typename LAME>
 auto setupLameHelper(LAME& lame, WavFile& wav)
 {
@@ -21,6 +29,19 @@ auto setupLameHelper(LAME& lame, WavFile& wav)
 }
 
 
+/**
+ * \brief Function to get encoder function
+ *
+ * Encoder function is different for STEREO and MONO.
+ * To provide the same code can be used this function.
+ *
+ * \param lame poiunter
+ * \param Wav buffer
+ * \param Mp3 buffer
+ * \param Channel 1 or 2
+ * \param Mp3 buffer size
+ * \return encoder function
+ */
 template <typename LAME, typename WAV_BUF, typename MP3_BUF>
 std::function<int(int)> getEncodeFunctionHelper(LAME& lame, WAV_BUF& wavBuf, MP3_BUF& mp3Buf, int channels, size_t lv_mp3BufSize)
 {

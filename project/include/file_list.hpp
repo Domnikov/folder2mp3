@@ -18,10 +18,10 @@ namespace folder2cpp
 /**
  * @brief Class FileList to request file list from directory with specific file extension
  *
- * Stateless class ant instance of it cannot be created.
+ * Stateless class. An instance of FileList object cannot be created.
  * fileList is a nickname which container type is used
  *
- * Static function get will do all work: get path, file extention and return file list
+ * Static function 'get' will do all work: get path, file extention and return file list
  *
  */
 class FileList
@@ -36,7 +36,7 @@ class FileList
 
 
         /**
-         * \brief Static function get will do all work: get path, file extention and return file list
+         * \brief Static function which do all work: get path, file extention and return file list
          *
          * Functin simply copy all files into new container
          *

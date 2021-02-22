@@ -6,6 +6,7 @@
  *
  */
 #pragma once
+
 #include "lame_encoder.hpp"
 
 #include <filesystem>
@@ -119,7 +120,14 @@ class ThreadPool final
                         }
                         if (!lv_done)
                         {
-                            Processor::process(std::move(element), m_verbose);
+                            try
+                            {
+                                Processor::process(std::move(element), m_verbose);
+                            }
+                            catch(std::runtime_error& ex)
+                            {
+                                fprintf(stderr, "Error: %s\n", ex.what());
+                            }
                         }
                     }
                     }));

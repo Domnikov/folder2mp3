@@ -1,3 +1,10 @@
+/**
+ * \file cmd_options.hpp
+ * \author Domnikov Ivan
+ * \copyright © Domnikov Ivan 2021
+ * File contans class FileList to request file list from directory with specific file extension
+ *
+ */
 #pragma once
 
 #include <string_view>
@@ -7,25 +14,54 @@
 namespace folder2cpp
 {
 
+
+/**
+ * @brief Class FileList to request file list from directory with specific file extension
+ *
+ * Stateless class ant instance of it cannot be created.
+ * fileList is a nickname which container type is used
+ *
+ * Static function get will do all work: get path, file extention and return file list
+ *
+ */
 class FileList
 {
-public:
-    using fileList = std::vector<std::filesystem::path>;
+    public:
 
-    static fileList get(std::string_view path, std::string_view extension)
-    {
-        fileList lv_fileList;
-        for (const auto& file : std::filesystem::directory_iterator(path))
+        /**
+         * \brief Nickmane with container data type
+         */
+        using fileList = std::vector<std::filesystem::path>;
+
+
+
+        /**
+         * \brief Static function get will do all work: get path, file extention and return file list
+         *
+         * Functin simply copy all files into new container
+         *
+         * \param Path for folder
+         * \param File extension
+         * \returns File list in container
+         */
+        static fileList get(std::string_view path, std::string_view extension)
         {
-            if(file.path().extension() == extension)
-                lv_fileList.emplace_back(file);
+            fileList lv_fileList;
+
+            for (const auto& file : std::filesystem::directory_iterator(path))
+            {
+                if(file.path().extension() == extension)
+                    lv_fileList.emplace_back(file);
+            }
+
+            return lv_fileList;
         }
 
-        return lv_fileList;
-    }
-
-private:
-    FileList() = delete;
+    private:
+        /**
+         * \brief Deleted constructor. Instance cannot be created
+         */
+        FileList() = delete;
 
 };
 

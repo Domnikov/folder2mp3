@@ -17,6 +17,8 @@ class LameEncoder
 
     static void process(std::filesystem::path&& file, bool verbose)
     {
+        static std::mutex lv_mutex;
+
         try
         {
             WavFile lv_wavFile(file);
@@ -25,7 +27,6 @@ class LameEncoder
             {
                 if (verbose)
                 {
-                    static std::mutex lv_mutex;
                     std::lock_guard<std::mutex> lock(lv_mutex);
                     fprintf(stdout, "%s\n", lv_wavFile.getTextInfo().data());
                 }
@@ -37,7 +38,6 @@ class LameEncoder
 
             if (verbose)
             {
-                static std::mutex lv_mutex;
                 std::lock_guard<std::mutex> lock(lv_mutex);
                 fprintf(stdout, "Encoding %s --> %s\n", lv_wavFile.getPath().c_str(), lv_mp3File.getPath().c_str());
                 fprintf(stdout, "%s\n", lv_wavFile.getTextInfo().data());

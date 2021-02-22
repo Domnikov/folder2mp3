@@ -1,5 +1,5 @@
 /**
- * \file cmd_options.hpp
+ * \file mp3_file.hpp
  * \author Domnikov Ivan
  * \copyright © Domnikov Ivan 2021
  * File contans Mp3File class to provide convinient interface for mp3 file
@@ -28,7 +28,7 @@ class Mp3File
         /**
          * \brief Class constructor
          *
-         * Take mp3 file path and open it. If file is opened and ready to read then isCorrect will return true
+         * Take mp3 file path and open it. If file is opened and ready to write then isCorrect will be setup to true
          *
          * \param Path to mp3 file
          */
@@ -50,10 +50,12 @@ class Mp3File
         /**
          * \brief Write buffer to file
          *
+         * This function must be inlined so it must be in header file
+         *
          * \param Pointer to buffer
          * \param Buffer length
          */
-        size_t write(unsigned char* buf, size_t length)
+        inline size_t write(unsigned char* buf, size_t length)
         {
             return fwrite(buf, sizeof(buf[0]), length, m_file.get());
         }

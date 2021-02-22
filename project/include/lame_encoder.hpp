@@ -1,5 +1,5 @@
 /**
- * \file cmd_options.hpp
+ * \file lame_encoder.hpp
  * \author Domnikov Ivan
  * \copyright © Domnikov Ivan 2021
  * File contans LameEncoder class to encode wav file into mp3

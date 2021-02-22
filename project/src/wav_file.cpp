@@ -20,6 +20,10 @@ Duration         = %d:%02d.%03d
 )";
 
 
+/**
+ * \brief printf helper function. Will allocate memory and print text file information to text buffer
+ *
+ */
 template <typename ... Args>
 auto printfHelper(std::unique_ptr<char[]>& buf, const char* fmt, Args ... args)
 {

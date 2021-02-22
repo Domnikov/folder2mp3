@@ -1,5 +1,5 @@
 /**
- * \file cmd_options.hpp
+ * \file lame_wrapper.hpp
  * \author Domnikov Ivan
  * \copyright © Domnikov Ivan 2021
  * File contans LameWrapper class to provide convinient interface for libmp3lame

@@ -18,8 +18,6 @@ CmdOptions CmdOptions::getOptions(int argc, const char **argv)
         throw std::runtime_error("Command line arguments error: Require minimum one argument");
     }
 
-    lv_options.m_path = argv[argc-1];
-
     for (int i = 1; i < argc-1; i++)
     {
         if (!strcmp(argv[i], "-v") || !strcmp(argv[i], "--verbose"))
@@ -64,6 +62,15 @@ CmdOptions CmdOptions::getOptions(int argc, const char **argv)
         }
     }
 
+    // Check last argument
+    if (!strcmp(argv[argc-1], "--version"))
+    {
+        lv_options.m_version = true;
+    }
+    else
+    {
+        lv_options.m_path = argv[argc-1];
+    }
 
     return lv_options;
 }

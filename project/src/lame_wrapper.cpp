@@ -2,6 +2,8 @@
 #include <memory>
 #include <functional>
 
+using namespace folder2cpp;
+
 template <typename LAME>
 auto setupLameHelper(LAME& lame, WavFile& wav)
 {

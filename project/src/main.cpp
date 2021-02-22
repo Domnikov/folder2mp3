@@ -1,9 +1,15 @@
 #include "../include/cmd_options.h"
 #include "../include/file_list.hpp"
 #include "../include/encoder_pool.hpp"
+#include "../include/lame_wrapper.h"
 
 #include <iostream>
 #include <memory>
+
+namespace
+{
+
+constexpr auto VERSION = "0.1.1";
 
 constexpr auto CMD_ERROR = R"(
 Using:
@@ -15,6 +21,8 @@ Options:
     --version           output version information and exit
 )";
 
+}
+
 using namespace folder2cpp;
 
 int main(int argc, const char **argv)
@@ -22,6 +30,13 @@ int main(int argc, const char **argv)
     try
     {
         auto lv_options = CmdOptions::getOptions(argc, argv);
+
+        if (lv_options.isVersion())
+        {
+            std::cout << "folder2mp3 version: " << VERSION <<std::endl;
+            std::cout << "Lame (libmp3lame) version: " << LameWrapper::getLameVersion() <<std::endl;
+            return 0;
+        }
 
         auto files = FileList::get(lv_options.getPath(), ".wav");
 
@@ -31,7 +46,7 @@ int main(int argc, const char **argv)
             lv_threadNumb = std::thread::hardware_concurrency();
         }
 
-        EncoderPool::process(lv_threadNumb, std::move(files));
+        EncoderPool::process(lv_threadNumb, std::move(files), lv_options.isVerbose());
     }
     catch(std::runtime_error& err)
     {

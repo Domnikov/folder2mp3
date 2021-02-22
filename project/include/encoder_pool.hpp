@@ -18,7 +18,7 @@ class LameEncoder
 {
     public:
 
-    static void process(std::filesystem::path&& file)
+    static void process(std::filesystem::path&& file, bool verbose)
     {
         try
         {
@@ -26,14 +26,19 @@ class LameEncoder
 
             if (!lv_wavFile.isCorrect())
             {
-                static std::mutex lv_mutex;
-                std::lock_guard<std::mutex> lock(lv_mutex);
-                fprintf(stdout, "%s\n", lv_wavFile.getTextInfo().data());
+                if (verbose)
+                {
+                    static std::mutex lv_mutex;
+                    std::lock_guard<std::mutex> lock(lv_mutex);
+                    fprintf(stdout, "%s\n", lv_wavFile.getTextInfo().data());
+                }
                 return;
             }
 
             file.replace_extension(".mp3");
             Mp3File lv_mp3File(file);
+
+            if (verbose)
             {
                 static std::mutex lv_mutex;
                 std::lock_guard<std::mutex> lock(lv_mutex);
@@ -58,13 +63,14 @@ class ThreadPool final
 {
     public:
 
-        static void process(int threadNUmber, typename Processor::listType&& value)
+        static void process(int threadNUmber, typename Processor::listType&& value, bool verbose)
         {
             ThreadPool pool;
             {
                 std::lock_guard<std::mutex> lock(pool.m_mutex);
                 std::move(value.cbegin(), value.cend(), std::back_inserter(pool.m_queue));
             }
+            pool.m_verbose = verbose;
             pool.run(threadNUmber);
         }
 
@@ -87,7 +93,7 @@ class ThreadPool final
 
             for(int i = 0; i < threadNUmber; ++i)
             {
-                m_pool.push_back(std::thread([this, i]{
+                m_pool.push_back(std::thread([this]{
                     bool lv_done = false;
 
                     while (!lv_done)
@@ -107,14 +113,14 @@ class ThreadPool final
                         }
                         if (!lv_done)
                         {
-                            Processor::process(std::move(element));
+                            Processor::process(std::move(element), m_verbose);
                         }
                     }
                     }));
             }
         }
 
-
+        bool m_verbose = false;
         std::vector<std::thread> m_pool;
         std::condition_variable m_cond;
         std::list<typename Processor::listType::value_type> m_queue;

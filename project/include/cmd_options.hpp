@@ -2,7 +2,7 @@
  * \file cmd_options.hpp
  * \author Domnikov Ivan
  * \copyright © Domnikov Ivan 2021
- * File contans class CmdOptions for checking all command line options and return as an object with read options as its members
+ * File contans CmdOptions class for checking all command line options and return as an object with read options as its members
  *
  */
 #pragma once

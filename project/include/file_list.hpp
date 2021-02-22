@@ -2,7 +2,7 @@
  * \file cmd_options.hpp
  * \author Domnikov Ivan
  * \copyright © Domnikov Ivan 2021
- * File contans class FileList to request file list from directory with specific file extension
+ * File contans FileList class to request file list from directory with specific file extension
  *
  */
 #pragma once

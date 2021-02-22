@@ -2,7 +2,7 @@
  * \file encoder_pool.hpp
  * \author Domnikov Ivan
  * \copyright © Domnikov Ivan 2021
- * File contans class ThreadPool. This class gets container with data and process it with different threads by Processor
+ * File contans ThreadPool class. This class gets container with data and process it with different threads by Processor
  *
  */
 #pragma once
@@ -41,7 +41,7 @@ class ThreadPool final
          * \brief Static method to process given data list
          *
          * This function creates thread pool instance, run threads and wait until last data element will be processed
-         * dataList must be moved into ThreadPool
+         * dataList must be moved into ThreadPool.
          *
          * \param Number of threads
          * \param Data list as Processor::listType

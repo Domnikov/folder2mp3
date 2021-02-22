@@ -39,6 +39,7 @@ class FileList
          * \brief Static function which do all work: get path, file extention and return file list
          *
          * Functin simply copy all files into new container
+         * Will throw an exception if dirrector if wrong
          *
          * \param Path for folder
          * \param File extension

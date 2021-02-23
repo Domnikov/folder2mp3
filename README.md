@@ -44,7 +44,7 @@ Tests compilation:
 ```
     mkdir build
     cd build
-    cmake .. -DCOMPILE_TESTS=ON
+    cmake .. -DBUILD_TESTING=ON
     cmake --build .
 ```
 To run tests:
@@ -95,4 +95,12 @@ version 0.0.5        2021.02.22 12:31        Mp3File class + full tests
 version 0.1.0        2021.02.22 15:10        LameWarapper + tests. First working version
 version 0.1.1        2021.02.22 17:13        Add verbose and version funcitons. Code refactoring
 version 0.2.0        2021.02.22 21.33        Cleaned all source code. Linux version fully working
+version 0.3.0        2021.02.24 01.06        Windows version fully working
+```
+
+##TODO
+
+```
+[ ] Test visual studio
+[ ] Check how to encode one file from different threads
 ```

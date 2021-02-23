@@ -1,3 +1,5 @@
+set(CMAKE_FIND_LIBRARY_SUFFIXES ".so" ".a")
+
 find_package(GTest REQUIRED)
 if (NOT GTest_FOUND)
     message(FATAL_ERROR "Cannot find Google Test Framework!")
@@ -7,13 +9,6 @@ endif()
 include_directories(${GTEST_INCLUDE_DIRS} ../include)
 
 set(TEST_SRC test_main.cpp) 
-#	     lame_wrapper_tests.cpp 
-#	     cmd_options_tests.cpp
-#	     file_list_tests.cpp
-#	     encoder_pool_tests.cpp
-#	     wav_file_tests.cpp
-#	     mp3_file_tests.cpp
-#	     )
 
 foreach(SRC ${SOURCE_EXE})
     if(NOT ${SRC} MATCHES "src/main.cpp")
@@ -24,5 +19,4 @@ endforeach()
 
 add_executable(folder2mp3_test ${TEST_SRC})
 
-target_link_libraries(folder2mp3_test ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} mp3lame pthread)
-
+target_link_libraries(folder2mp3_test ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} pthread libmp3lame)

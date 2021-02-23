@@ -45,7 +45,7 @@ auto printfHelper(std::unique_ptr<char[]>& buf, const char* fmt, Args ... args)
 WavFile::WavFile(const std::filesystem::path& filePath)
     :m_path(filePath)
 {
-    m_file.reset(fopen(filePath.c_str(), "rb"));
+    m_file.reset(fopen(filePath.string().c_str(), "rb"));
 
     if (m_file.get())
     {
@@ -89,7 +89,7 @@ std::string_view WavFile::getTextInfo()
         }
         else
         {
-            m_infoLength = printfHelper(m_textInfo, "Wav file currepted: %s\n", m_path.c_str());
+            m_infoLength = printfHelper(m_textInfo, "Wav file currepted: %s\n", m_path.string().c_str());
         }
     }
 

@@ -8,25 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 SET(CMAKE_CXX_FLAGS "-O2 -Wall" )
 
 
-# Check all libraries
-find_path(LAME_H_DIR lame/lame.h)
-message(STATUS "Found ${LAME_H_DIR}/lame/lame.h" )
-
-if (UNIX)
-    find_library(LIBMP3LAME NAMES mp3lame)
-endif()
-message(STATUS "Found ${LIBMP3LAME}")
-
-if (NOT LIBMP3LAME)
-    message(FATAL_ERROR "libmp3lame cannot be found")
-endif ()
-
-if(NOT LAME_H_DIR)
-    message(FATAL_ERROR "lame.h header cannot be found")
-endif()
-
-
-
 # Find and enable doxygen
 find_package(Doxygen)
 set(DOXYGEN_EXTRACT_ALL          "YES")

@@ -63,7 +63,7 @@ class LameEncoder
             {
                 static std::mutex lv_mutex;
                 std::lock_guard<std::mutex> lock(lv_mutex);
-                printf("Encoding %s --> %s\n", lv_wavFile.getPath().c_str(), lv_mp3File.getPath().c_str());
+                printf("Encoding %s --> %s\n", lv_wavFile.getPath().string().c_str(), lv_mp3File.getPath().string().c_str());
                 printf("%s\n", lv_wavFile.getTextInfo().data());
             }
 

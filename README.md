@@ -12,21 +12,61 @@ This is test project to implement comman line application which must be able to 
     -t=N, --threads=N   option to configure how many threads use for coding. Default N = CPU number [1..99]
     --version           output version information and exit
 
-# Installation
+# Compilation
 
 ## Linux
 
-For folder2mp3 compilation reqires gcc >= 7.0, cmake and libmp3lame-dev.
+For folder2mp3 compilation reqires gcc >= 8.0, cmake >= 3.1 and libmp3lame-dev or manualy compiled lame with -static-lib specifier.
 
-Here is the installation steps:
+Here is the compilation steps:
 ```
     mkdir build
     cd build
     cmake ..
     cmake --build .
+```
+
+Executable file will locate in project folder
+
+To install folder2mp3 into system PATH:
+
+```
     make install
 ```
 As result folder2mp3 execution file must appear in default PATH directory.
+
+## Windows (MINGW)
+
+For folder2mp3 compilation reqires mingw >= 8.0 and cmake >= 3.1
+
+How to check cmake:
+```
+cmake --version
+
+{Print cmake version to stdin}
+```
+
+How to check mingw:
+```
+mingw32-make -- version
+
+{Print mingw version to stdin}
+
+g++ --version
+
+{Print gcc version to stdin}
+```
+
+Here is the compilaton steps:
+```
+    mkdir build
+    cd build
+    cmake .. -G "MinGW Makefiles"
+    cmake --build .
+```
+Executable file will locate in project folder
+
+If lame library was not found or couldn't be linked then need to compile lame and replace libmp3lame.a in ./ext/ folder
 
 
 ## Using examples

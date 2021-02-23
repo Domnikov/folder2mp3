@@ -50,15 +50,28 @@ target_link_libraries(folder2mp3 pthread libmp3lame)
     add_test(RunTest folder2mp3 ${CMAKE_BINARY_DIR}/project/res)
     set_tests_properties(RunTest PROPERTIES
 	PASS_REGULAR_EXPRESSION "Error: Wav file currepted:*")
+if(UNIX)
     add_test(CheckSample1 find ${CMAKE_BINARY_DIR}/project/res -name sample1.mp3)
     set_tests_properties(CheckSample1 PROPERTIES
         DEPENDS RunTest
         PASS_REGULAR_EXPRESSION "${CMAKE_BINARY_DIR}/project/res/sample1.mp3")
+
     add_test(CheckSample2 find ${CMAKE_BINARY_DIR}/project/res -name sample2.mp3)
     set_tests_properties(CheckSample2 PROPERTIES
         DEPENDS RunTest
         PASS_REGULAR_EXPRESSION "${CMAKE_BINARY_DIR}/project/res/sample2.mp3")
-	
+elseif(WIN32)
+    add_test(NAME CheckSample1 COMMAND where sample1.mp3  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/project/res)
+    set_tests_properties(CheckSample1 PROPERTIES
+        DEPENDS RunTest
+        PASS_REGULAR_EXPRESSION "sample1.mp3")
+
+    add_test(NAME CheckSample2 COMMAND where sample2.mp3  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/project/res)
+    set_tests_properties(CheckSample2 PROPERTIES
+        DEPENDS RunTest
+        PASS_REGULAR_EXPRESSION "sample2.mp3")
+
+endif(UNIX)
 
 
 # Add Unit tests

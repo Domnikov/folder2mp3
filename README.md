@@ -79,8 +79,35 @@ Following example will encode all wav files to mp3 from "HOME/audiobook" folder
 # Testing 
 
 ## Auto testing
-Google tests requre for auto tests.
-Tests compilation:
+Project can be easily tested with using CTests:
+```
+{After building}
+ctest .
+```
+As output it must show if all tests were passed of failed. To see details command has option "--verbose".
+
+Output sample:
+```
+$ ctest .
+Test project /home/ivan/tests/cinemo/folder2mp3/build
+    Start 1: RunTest
+1/4 Test #1: RunTest ..........................   Passed    0.39 sec
+    Start 2: CheckSample1
+2/4 Test #2: CheckSample1 .....................   Passed    0.00 sec
+    Start 3: CheckSample2
+3/4 Test #3: CheckSample2 .....................   Passed    0.00 sec
+    Start 4: UnitTests
+4/4 Test #4: UnitTests ........................   Passed    0.47 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   0.87 sec
+```
+##Unit tests:
+
+Unit tests can be done only if GTest library were installed and compiler can find its modules.
+
+To compile with unit tests need to use option -DBUILD_TESTING=ON
 ```
     mkdir build
     cd build

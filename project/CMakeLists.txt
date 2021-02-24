@@ -7,7 +7,12 @@ set(SOURCE_EXE src/main.cpp
 
 add_executable(folder2mp3 ${SOURCE_EXE})
 
+
+if(UNIX)
 target_include_directories(folder2mp3 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+elseif(WIN32)
+target_include_directories(folder2mp3 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/ext/inc)
+endif(UNIX)
 
 
 

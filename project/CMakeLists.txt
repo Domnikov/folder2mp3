@@ -5,7 +5,6 @@ set(SOURCE_EXE src/main.cpp
 			  src/mp3_file.cpp
 			  src/lame_wrapper.cpp)
 
-
 add_executable(folder2mp3 ${SOURCE_EXE})
 
 target_include_directories(folder2mp3 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -45,7 +44,24 @@ set_target_properties(libmp3lame PROPERTIES IMPORTED_LOCATION ${LIBMP3LAME})
 target_link_libraries(folder2mp3 pthread libmp3lame)
 
 
-# Add tests
+# Add Auto Tests
+    enable_testing()
+
+    add_test(RunTest folder2mp3 ${CMAKE_BINARY_DIR}/project/res)
+    set_tests_properties(RunTest PROPERTIES
+	PASS_REGULAR_EXPRESSION "Error: Wav file currepted:*")
+    add_test(CheckSample1 find ${CMAKE_BINARY_DIR}/project/res -name sample1.mp3)
+    set_tests_properties(CheckSample1 PROPERTIES
+        DEPENDS RunTest
+        PASS_REGULAR_EXPRESSION "${CMAKE_BINARY_DIR}/project/res/sample1.mp3")
+    add_test(CheckSample2 find ${CMAKE_BINARY_DIR}/project/res -name sample2.mp3)
+    set_tests_properties(CheckSample2 PROPERTIES
+        DEPENDS RunTest
+        PASS_REGULAR_EXPRESSION "${CMAKE_BINARY_DIR}/project/res/sample2.mp3")
+	
+
+
+# Add Unit tests
 option(BUILD_TESTING "Compile the tests" OFF)
 if(BUILD_TESTING)
   add_subdirectory(test)

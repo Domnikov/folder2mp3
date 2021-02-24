@@ -29,6 +29,8 @@ if(DOXYGEN_FOUND)
 
 endif()
 
+# Enable CTest
+enable_testing()
 
 # Include subprojects
 add_subdirectory(project)

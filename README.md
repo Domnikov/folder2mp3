@@ -37,7 +37,9 @@ As result folder2mp3 execution file must appear in default PATH directory.
 
 ## Windows (MINGW)
 
-For folder2mp3 compilation reqires mingw >= 8.0 and cmake >= 3.1
+For folder2mp3 compilation reqires mingw >= 9.0 and cmake >= 3.1
+
+mingw can be installed as part of MSYS2: https://www.msys2.org/
 
 How to check cmake:
 ```

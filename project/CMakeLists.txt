@@ -33,7 +33,7 @@ find_library(LIBMP3LAME mp3lame)
 
 if (NOT LIBMP3LAME)
     set(CMAKE_LIBRARY_PATH ${CMAKE_SOURCE_DIR}/ext/lib)
-    find_library(LIBMP3LAME mp3lame)
+    find_library(LIBMP3LAME NAMES mp3lame libmp3lame)
     if (NOT LIBMP3LAME)
         message(FATAL_ERROR "libmp3lame cannot be found")
     endif (NOT LIBMP3LAME)
@@ -46,7 +46,11 @@ set_target_properties(libmp3lame PROPERTIES IMPORTED_LOCATION ${LIBMP3LAME})
 
 
 # Add libraries
+if(MSVC)
+target_link_libraries(folder2mp3 libmp3lame)
+else(MSVC)
 target_link_libraries(folder2mp3 pthread libmp3lame)
+endif(MSVC)
 
 
 # Add Auto Tests

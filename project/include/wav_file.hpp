@@ -112,6 +112,7 @@ class WavFile
         /**
          * \brief WavFile header data structure
          */
+#pragma pack(push,1)
         struct wavHeader
         {
             char    id[4];           // should always contain "RIFF"
@@ -126,7 +127,8 @@ class WavFile
             int16_t bitsPerSample;
             char    data[4];         // should always contain "data"
             int32_t bytesInData;
-        } __attribute__((__packed__));
+        };
+#pragma pack(pop)
 
         // Check wavHeader structure size
         static constexpr size_t wavHeaderSize = 44;

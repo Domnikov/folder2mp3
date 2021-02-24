@@ -26,7 +26,7 @@ Here is the compilation steps:
     cmake --build .
 ```
 
-Executable file will locate in project folder
+Executable file will locate in build/project folder
 
 To install folder2mp3 into system PATH:
 
@@ -66,13 +66,32 @@ Here is the compilaton steps:
     cmake .. -G "MinGW Makefiles"
     cmake --build .
 ```
-Executable file will locate in project folder
+Executable file will locate in build/project folder
 
 If lame library was not found or couldn't be linked then need to compile lame and replace libmp3lame.a in ./ext/ folder
 
 Attention!
-If during compilation many errors occure that cannot convert from 'std::basic_string_view<wchar_t>' to 'std::filesystem::__cxx11::path&& then need to be sure if mingw doesn't use Visual Studio include paths.
+If during compilation many errors occure that cannot convert from 'std::basic_string_view<wchar_t>' to 'std::filesystem::__cxx11::path&& then mingw version is too low. Need to update mingw version to >=9
 
+
+
+## Windows (Visual Studio)
+
+For folder2mp3 compilation reqires Visual Studio 19 or more. Before compilation need to be sure that libmp3lame is locating in LIB path or replace libmp3lame.a in ext/lib folder.
+
+To compile with static linking need to provide static libmp3lame.a otherwise it will requre libmp3lame.dll
+
+Compilaton steps:
+```
+    mkdir build
+    cd build
+    cmake ..
+    cmake --build .
+```
+Executable file will locate in build/project folder
+
+Attention!
+Prosided libmp3lame.a compiled for mingw and cannot be linked to Visual Studio. If after compilation it will fail with linked errors then need to provide library with supporting Visial Studio
 
 ## Using examples
 
@@ -173,7 +192,7 @@ version 0.3.0        2021.02.24 01.06        Windows version fully working
 ##TODO
 
 ```
-[ ] Test visual studio
+[*] Test visual studio
 [ ] Check how to encode one file from different threads
-[ ] Fix wchar_t compilation error
+[*] Fix wchar_t compilation error
 ```

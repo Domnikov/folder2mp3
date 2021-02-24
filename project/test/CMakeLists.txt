@@ -19,7 +19,11 @@ endforeach()
 
 add_executable(folder2mp3_test ${TEST_SRC})
 
-target_link_libraries(folder2mp3_test ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} pthread libmp3lame)
+if(MSVC)
+    target_link_libraries(folder2mp3_test ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} libmp3lame)
+else(MSVC)
+    target_link_libraries(folder2mp3_test ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} pthread libmp3lame)
+endif(MSVC)
 
 
 add_test(NAME UnitTests COMMAND folder2mp3_test WORKING_DIRECTORY ${CMAKE_BINARY_DIR})

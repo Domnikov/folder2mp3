@@ -68,6 +68,9 @@ Executable file will locate in project folder
 
 If lame library was not found or couldn't be linked then need to compile lame and replace libmp3lame.a in ./ext/ folder
 
+Attention!
+If during compilation many errors occure that cannot convert from 'std::basic_string_view<wchar_t>' to 'std::filesystem::__cxx11::path&& then need to be sure if mingw doesn't use Visual Studio include paths.
+
 
 ## Using examples
 

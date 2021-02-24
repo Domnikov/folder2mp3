@@ -173,4 +173,5 @@ version 0.3.0        2021.02.24 01.06        Windows version fully working
 ```
 [ ] Test visual studio
 [ ] Check how to encode one file from different threads
+[ ] Fix wchar_t compilation error
 ```

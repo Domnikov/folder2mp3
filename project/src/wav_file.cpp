@@ -54,7 +54,7 @@ WavFile::WavFile(const std::filesystem::path& filePath)
          {
              m_isCorrect = (0 == strncmp(m_header.id, "RIFF", 4));
 
-             if (m_isCorrect)
+             if (m_isCorrect && m_header.bytesPerSecond)
              {
                  m_durationMsec = 1000LL * m_header.bytesInData / m_header.bytesPerSecond;
              }

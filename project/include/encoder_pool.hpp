@@ -51,7 +51,6 @@ class ThreadPool final
         {
             ThreadPool pool;
             {
-                std::lock_guard<std::mutex> lock(pool.m_mutex);
                 std::move(dataList.cbegin(), dataList.cend(), std::back_inserter(pool.m_queue));
             }
             pool.m_verbose = verbose;
